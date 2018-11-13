@@ -1,0 +1,9 @@
+DELAY 50
+REM open terminal on ubuntu
+CTRL-ALT T
+DELAY 3000
+STRING echo 'hello_world' > hello_world
+ENTER
+DELAY 50
+STRING exit
+ENTER

